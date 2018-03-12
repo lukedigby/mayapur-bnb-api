@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Property;
+
 class PropertiesController extends Controller
 {
     /**
@@ -16,19 +18,6 @@ class PropertiesController extends Controller
 
     public function index()
     {
-        return response()->json([
-            [
-                'title' => '2 BHK', 
-                'price' => '1500'
-            ],
-            [
-                'title' => '3 BHK', 
-                'price' => '4500'
-            ],
-            [
-                'title' => '1 BHK', 
-                'price' => '1000'
-            ],
-        ]);
+        return response()->json(Property::all());
     }
 }
