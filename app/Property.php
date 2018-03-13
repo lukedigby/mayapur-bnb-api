@@ -2,11 +2,7 @@
 
 namespace App;
 
-use Illuminate\Auth\Authenticatable;
-use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 class Property extends Model
 {
@@ -16,7 +12,21 @@ class Property extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'image', 'price'
+        'title', 'description', 'price'
     ];
+
+    protected $appends = [
+      'image'
+    ];
+
+    public function images()
+    {
+      return $this->belongsToMany('App\Image');
+    }
+
+    public function getImageAttribute()
+    {
+      return $this->images()->first()->url;
+    }
 
 }

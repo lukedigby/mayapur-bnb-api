@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Property::class, 50)->create();
+        factory(App\Property::class, 50)->create()->each(function ($p) {
+          $p->images()->save(factory(App\Image::class)->make());
+        });
     }
 }

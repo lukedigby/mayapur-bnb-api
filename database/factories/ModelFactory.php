@@ -26,3 +26,10 @@ $factory->define(App\Property::class, function (Faker\Generator $faker) {
         'price' => $faker->numberBetween(1000, 9000),
     ];
 });
+
+
+$factory->define(App\Image::class, function (Faker\Generator $faker) {
+    return [
+        'url' => $faker->imageUrl(640, 480, 'city'),
+    ];
+});

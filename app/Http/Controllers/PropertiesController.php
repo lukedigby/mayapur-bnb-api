@@ -18,6 +18,6 @@ class PropertiesController extends Controller
 
     public function index()
     {
-        return response()->json(Property::all());
+        return response()->json(Property::limit(10)->get());
     }
 }
